@@ -42,7 +42,7 @@ export const registerUserWithEmailAndPassword = async ({ email, password, displa
       await updateProfile(FirebaseAuth.currentUser, { displayName });
       return { ok: true, uid, photoURL, email, displayName };
    } catch (error) {
-      console.log(error);
+      //console.log(error);
       return { ok: false, errorMessage: error.message };
    }
 };
