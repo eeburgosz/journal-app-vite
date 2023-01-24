@@ -1,7 +1,7 @@
 
 import { collection, doc, setDoc } from "firebase/firestore/lite";
 import { FirebaseDB } from "../../firebase/config";
-import { loadNotes } from "../../helpers";
+import { fileUpload, loadNotes } from "../../helpers";
 import { addNewEmptyNote, noteUpdated, savingNewNote, setActiveNote, setNotes, setSaving } from "./journalSlice";
 
 export const startNewNote = () => {
@@ -58,5 +58,12 @@ export const startSavingNote = () => {
       const docRef = doc(FirebaseDB, `${uid}/journal/notas/${note.id}`);
       await setDoc(docRef, noteToFirestore, { merge: true }); //!  Tercer parámentro "setOptions" -> merge:true sirve por si hay campos que estoy mandando en "noteToFirebase" que no existen en la DB, los campos que están en DB se mantienen
       dispatch(noteUpdated(note));
+   };
+};
+
+export const startUploadingFiles = (files = []) => {
+   return async (dispatch) => {
+      dispatch(setSaving());
+      await fileUpload(files[0]);
    };
 };
