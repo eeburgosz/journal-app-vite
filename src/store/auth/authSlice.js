@@ -1,4 +1,3 @@
-import { Login } from "@mui/icons-material";
 import { createSlice } from "@reduxjs/toolkit";
 
 export const authSlice = createSlice({
@@ -26,7 +25,7 @@ export const authSlice = createSlice({
          state.email = null;
          state.displayName = null;
          state.photoURL = null;
-         state.errorMessage = payload.errorMessage;
+         state.errorMessage = payload?.errorMessage;
       },
       checkingCredentials: (state) => {
          state.status = 'checking';
