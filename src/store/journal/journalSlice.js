@@ -16,7 +16,7 @@ export const journalSlice = createSlice({
       } */
    },
    reducers: {
-      //!   Siempre cosas síncronas
+      //!   Siempre cosas síncronas. NO se deben ejecutar funciones de agentes externos.
 
       savingNewNote: (state) => {
          state.isSaving = true;
